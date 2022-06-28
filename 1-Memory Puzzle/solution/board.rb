@@ -1,22 +1,46 @@
+require_relative "card.rb"
 
 class Board
-   
-    def initialize(size)
-      @size=size
-      @grid=Array.new(size){ Array.new(size) }
-      
+  def initialize(n)
+    @size = n * n
+    @num_pairs = @size / 2
+    if @size.even?
+      @grid = Array.new(n) { Array.new(n) }
     end
-  
+    populate
+  end
+
+  def populate
+    arr = Card.shuffled_pairs(@num_pairs)
+    puts arr
+    (0...@grid.length).each do |i|
+      (@grid[i]...@grid.length).each do |j|
+        puts @num_pairs
+        value = arr.pop
+        @grid[[i,j]] = value
+      end
+    end
+  end
+
+  def render
+    puts @grid
+  end
+
+  def won?
+    @grid.flatten.each do |ele|
+      if ele == " "
+        return false
+      end
+    end
+
+    return true
+  end
+
+  # def reveal
+  #   @grid()
+  # end
+
 end
-
-
-
-
-
-
-
-
-
 
 # require_relative "card"
 

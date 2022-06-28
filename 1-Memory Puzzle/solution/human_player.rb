@@ -1,5 +1,6 @@
 
 class HumanPlayer
+  
 
 end
 

@@ -1,14 +1,45 @@
 
 class Card
-    # ALPHABET=("A".."Z").to_a
-    ALPHABET=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
-    attr_reader :value, :reveal
+    
+     attr_reader :value, :reveal
+
+    def self.shuffled_pairs(num_pairs)
+      alphabet = ("A".."Z").to_a
+      values = []
+      num_pairs.times do 
+        value = alphabet.sample
+       values << value << value
+       alphabet.delete(value)
+      end
+      values
+    end
+
     def initialize (value,reveal=false)
       # @face_up=true
       # @face_down=false
       @value=value
       @reveal=reveal
+    end
+
+    def face_down
+      @reveal = false
+    end
+
+    def face_up
+      @reveal = true
+    end
+
+    def check_reveal
+      @reveal
+    end
+
+    def show_value
+      if check_reveal 
+        value.to_s 
+      else
+        " "
+      end
     end
 
 end
