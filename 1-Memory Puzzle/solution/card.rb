@@ -1,6 +1,16 @@
 
 class Card
-  A
+    # ALPHABET=("A".."Z").to_a
+    ALPHABET=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    
+    attr_reader :value, :reveal
+    def initialize (value,reveal=false)
+      # @face_up=true
+      # @face_down=false
+      @value=value
+      @reveal=reveal
+    end
+
 end
 
 
